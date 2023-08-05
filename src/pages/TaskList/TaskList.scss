@@ -1,0 +1,15 @@
+.taskList {
+    background-color: var(--background-color);
+    min-height: 100%;
+
+    &__header {
+        background-color: inherit;
+        margin-top: 15px;
+        margin-bottom: 70px;
+    }
+
+    &__content {
+        margin: 0 auto;
+        max-width: 1590px;
+    }
+}
