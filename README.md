@@ -1,4 +1,4 @@
-# Todo/Task list:
+# Todo/Task list
 
 ## :globe_with_meridians: [Деплой](https://pokedex-xtansy.vercel.app/auth)
 

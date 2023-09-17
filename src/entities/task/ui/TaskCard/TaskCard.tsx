@@ -1,5 +1,3 @@
-import "./TaskCard.scss";
-
 import { Card, CardProps } from "antd";
 import { type Task } from "entities/task/model";
 
