@@ -12,7 +12,10 @@ export const TaskAdd = () => {
 	const dispatch = useAppDispatch();
 
 	const onPressEnter = () => {
-		if (errorMessage) return;
+		if (todoTitle.length < 2 || todoTitle.length > 70) {
+			setErrorMessage("Incorrect task length");
+			return;
+		}
 		dispatch(addTask(todoTitle));
 		setErrorMessage("");
 		setTodoTitle("");
@@ -21,11 +24,6 @@ export const TaskAdd = () => {
 	const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const value = event.target.value;
 		setTodoTitle(value);
-		if (value.length < 2 || value.length > 70) {
-			setErrorMessage("Incorrect task length");
-		} else {
-			setErrorMessage("");
-		}
 	};
 
 	return (
