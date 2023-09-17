@@ -1,8 +1,16 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { type Task, type TaskModel, type Query } from "./types";
 
+const initialTasks: Task[] = [
+	{ id: 0, title: "Тестовое задание", completed: true },
+	{ id: 1, title: "Прекрасный код", completed: true },
+	{ id: 2, title: "Покрытие тестами", completed: true },
+	{ id: 3, title: "Собеседование", completed: false },
+	{ id: 4, title: "Оффер", completed: false },
+];
+
 export const initialState: TaskModel = {
-	taskList: [],
+	taskList: initialTasks,
 	isLoadingTaskList: false,
 	errorMessage: null,
 	query: null,
