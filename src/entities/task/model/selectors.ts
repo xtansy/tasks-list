@@ -1,3 +1,5 @@
+import { createSelector } from "@reduxjs/toolkit";
+
 import { type Task } from "./types";
 
 export const useTaskSelector = (taskId: Task["id"]) => (state: RootState) =>
@@ -5,16 +7,12 @@ export const useTaskSelector = (taskId: Task["id"]) => (state: RootState) =>
 
 export const useTasksSelector = (state: RootState) => state.tasks.taskList;
 
-export const useTasksLoadingSelector = (state: RootState) =>
-	state.tasks.isLoadingTaskList;
-
 export const useQuerySelector = (state: RootState) => state.tasks.query;
 
-export const useFilteredTasksSelector = (state: RootState) => {
-	const query = state.tasks.query;
-	if (!query) return state.tasks.taskList;
-
-	return state.tasks.taskList.filter(
-		(task) => task.completed === query.completed
-	);
-};
+export const selectFilteredTasks = createSelector(
+	[useQuerySelector, useTasksSelector],
+	(query, tasks) => {
+		if (!query) return tasks;
+		return tasks.filter((task) => task.completed === query.completed);
+	}
+);

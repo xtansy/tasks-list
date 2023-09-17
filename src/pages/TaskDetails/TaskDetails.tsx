@@ -6,13 +6,10 @@ import { Link } from "react-router-dom";
 
 import { useAppSelector } from "shared";
 import { useTaskSelector } from "entities/task/model";
-import { useFetchTasks } from "entities/task";
 import { TaskToggler } from "features";
 import { TaskCard } from "entities/task";
 
 export const TaskDetails = () => {
-	useFetchTasks();
-
 	const { taskId } = useParams();
 
 	const task = useAppSelector(useTaskSelector(+taskId!));

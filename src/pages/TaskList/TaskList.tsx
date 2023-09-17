@@ -4,7 +4,7 @@ import { Layout, Typography, Divider, Col, Row } from "antd";
 const { Title } = Typography;
 
 import { useAppSelector } from "shared/model";
-import { useFilteredTasksSelector } from "entities/task/model";
+import { selectFilteredTasks } from "entities/task/model";
 import { TaskRow } from "entities/task";
 import { TaskToggler, TaskFilter, TaskAdd } from "features";
 
@@ -28,7 +28,7 @@ export const TaskList = () => {
 };
 
 const Content = () => {
-	const tasks = useAppSelector(useFilteredTasksSelector);
+	const tasks = useAppSelector(selectFilteredTasks);
 
 	return (
 		<Row gutter={[8, 16]} align="middle" justify="center">
