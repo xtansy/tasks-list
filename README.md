@@ -1,6 +1,6 @@
 # Todo/Task list
 
-## :globe_with_meridians: [Деплой](https://pokedex-xtansy.vercel.app/auth)
+## :globe_with_meridians: [Деплой](https://tasks-list-c5ageazjo-xtansy.vercel.app/)
 
 ### :hammer: Технологии
 
