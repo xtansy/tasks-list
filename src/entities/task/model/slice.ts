@@ -38,6 +38,12 @@ export const taskModel = createSlice({
 					: task
 			);
 		},
+		addTask: (state, action: PayloadAction<Task["title"]>) => {
+			const title = action.payload;
+			const id = Math.round(Math.random() * 1000);
+			const task: Task = { title, id, completed: false };
+			state.taskList.push(task);
+		},
 		setQuery: (state, action: PayloadAction<Query | null>) => {
 			const payload = action.payload;
 			state.query = payload;
@@ -58,5 +64,5 @@ export const taskModel = createSlice({
 	},
 });
 
-export const { toggleTaskCompleted, setQuery } = taskModel.actions;
+export const { toggleTaskCompleted, setQuery, addTask } = taskModel.actions;
 export const reducer = taskModel.reducer;
