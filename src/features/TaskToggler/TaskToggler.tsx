@@ -1,8 +1,11 @@
 import "./TaskToggler.scss";
 import { Checkbox } from "antd";
-import { Task } from "shared/types";
 import { useAppSelector, useAppDispatch } from "shared";
-import { useTaskSelector, toggleTaskCompleted } from "entities/task/model";
+import {
+	useTaskSelector,
+	toggleTaskCompleted,
+	type Task,
+} from "entities/task/model";
 import { getTaskStatus } from "entities/task";
 
 interface TaskTogglerProps {

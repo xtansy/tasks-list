@@ -1,30 +1,12 @@
-import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { Task } from "shared/types";
-import { getAllTasks } from "shared/api";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { type Task, type TaskModel, type Query } from "./types";
 
-export interface Query {
-	completed: boolean;
-}
-
-interface TaskModel {
-	query: Query | null;
-	taskList: Task[];
-	isLoadingTaskList: boolean;
-	errorMessage: null | string;
-}
-const initialState: TaskModel = {
+export const initialState: TaskModel = {
 	taskList: [],
 	isLoadingTaskList: false,
 	errorMessage: null,
 	query: null,
 };
-
-export const getTaskListAsync = createAsyncThunk<Task[]>(
-	"tasks/getTaskListAsync",
-	() => {
-		return getAllTasks();
-	}
-);
 
 export const taskModel = createSlice({
 	name: "tasks",
@@ -40,7 +22,7 @@ export const taskModel = createSlice({
 		},
 		addTask: (state, action: PayloadAction<Task["title"]>) => {
 			const title = action.payload;
-			const id = Math.round(Math.random() * 1000);
+			const id = state.taskList.length;
 			const task: Task = { title, id, completed: false };
 			state.taskList.push(task);
 		},
@@ -48,19 +30,6 @@ export const taskModel = createSlice({
 			const payload = action.payload;
 			state.query = payload;
 		},
-	},
-	extraReducers: (builder) => {
-		builder.addCase(getTaskListAsync.pending, (state) => {
-			state.isLoadingTaskList = true;
-		});
-		builder.addCase(getTaskListAsync.fulfilled, (state, { payload }) => {
-			state.isLoadingTaskList = false;
-			state.taskList = payload;
-		});
-		builder.addCase(getTaskListAsync.rejected, (state) => {
-			state.isLoadingTaskList = false;
-			state.errorMessage = "Error on fetching tasks";
-		});
 	},
 });
 

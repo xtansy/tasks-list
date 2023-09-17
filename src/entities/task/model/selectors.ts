@@ -1,4 +1,4 @@
-import { Task } from "shared/types";
+import { type Task } from "./types";
 
 export const useTaskSelector = (taskId: Task["id"]) => (state: RootState) =>
 	state.tasks.taskList.find((task) => task.id === taskId);
