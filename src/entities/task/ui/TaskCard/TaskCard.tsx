@@ -1,3 +1,5 @@
+import "./TaskCard.scss";
+
 import { Card, CardProps } from "antd";
 import { type Task } from "entities/task/model";
 
@@ -11,7 +13,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({
 	...args
 }) => {
 	return (
-		<Card title={`Task#${task.id}`} {...args}>
+		<Card className="taskCard" title={`Task#${task.id}`} {...args}>
 			<p>{task.title}</p>
 			{children}
 		</Card>

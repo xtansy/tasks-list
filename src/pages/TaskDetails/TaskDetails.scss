@@ -15,3 +15,13 @@
         }
     }
 }
+
+@media (max-width: 420px) {
+    .taskDetails {
+        &__content {
+            &-card {
+                width: 90%;
+            }
+        }
+    }
+}
