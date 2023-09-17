@@ -3,7 +3,7 @@ import "./TaskRow.scss";
 import { Typography } from "antd";
 import { useNavigate } from "react-router-dom";
 
-import { Task } from "shared/types";
+import { type Task } from "entities/task/model";
 const { Link } = Typography;
 
 interface TaskRowProps {

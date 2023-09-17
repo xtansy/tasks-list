@@ -1,5 +1,5 @@
 import { Card, CardProps } from "antd";
-import { Task } from "shared/types";
+import { type Task } from "entities/task/model";
 
 interface TaskCardProps extends CardProps {
 	task: Task;
